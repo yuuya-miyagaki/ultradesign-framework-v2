@@ -128,3 +128,4 @@ Allowed states: `pending`, `approved`, `blocked`, `n/a`.
 3. Update `docs/STATUS.md` with current phase, approval state, next action, blockers, and session notes.
 4. Keep `session_history` to the most recent 5 entries.
 5. Append durable lessons to `docs/LEARNINGS.md` when a pattern is worth keeping.
+6. Run `retro` after release, milestone completion, or significant failure recovery.

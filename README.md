@@ -29,6 +29,7 @@ cp -R ultradesign-framework-v2/templates your-project/templates
 ```bash
 mkdir -p docs/{requirements,handover,plans,qa-reports}
 cp templates/STATUS.template.md docs/STATUS.md
+cp templates/LEARNINGS.template.md docs/LEARNINGS.md
 cp templates/DESIGN-BRIEF.template.md docs/requirements/DESIGN-BRIEF.md
 cp templates/BRAND-DIRECTION.template.md docs/requirements/BRAND-DIRECTION.md
 cp templates/CONTENT-STRUCTURE.template.md docs/requirements/CONTENT-STRUCTURE.md
@@ -101,6 +102,9 @@ Phase 1 の正本は次の 5 枚とする。
 
 5. `qa`
 実装品質、アクセシビリティ、パフォーマンス、受入条件を確認する。
+
+6. `retro`
+リリース、マイルストーン、または大きな学びが出た区切りで `docs/LEARNINGS.md` を更新する。
 
 ## Design Rationale And Taste
 
@@ -216,7 +220,8 @@ your-project/
     ├── handover/
     │   └── TO-DEV.md
     ├── plans/
-    └── qa-reports/
+    ├── qa-reports/
+    └── LEARNINGS.md
 ```
 
 ## Assumptions
