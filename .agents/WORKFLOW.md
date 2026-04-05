@@ -73,11 +73,12 @@ onboard → brainstorm → [GATE discovery] → design-brief → [GATE requireme
 
 ## Lightweight Entry
 
-小規模な変更（色の修正、テキスト変更、アニメーション調整等）で全フローが不要な場合:
+小規模な変更だけでなく、既存クライアントとの合意済み案件などで discovery / requirements が口頭または既存資料で十分に固まっている場合も適用可能:
 
 - `phase_approvals.discovery` と `phase_approvals.requirements` を `n/a` に設定可能
 - brainstorm / design-brief / handover をスキップして直接 craft-* に入ってよい
 - ただし `design_review` と `STATUS.md` 更新は必須
+- Lightweight Entry を使った判断理由は `docs/LEARNINGS.md` に残すと、次案件の基準にしやすい
 
 ## Approval Updates
 

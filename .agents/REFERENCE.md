@@ -7,7 +7,7 @@
 | Discovery | `design-onboard` | `skills/discovery/design-onboard/SKILL.md` |
 | Discovery | `design-brainstorm` | `skills/discovery/design-brainstorm/SKILL.md` |
 | Discovery | `design-brief` | `skills/discovery/design-brief/SKILL.md` |
-| Discovery | `design-handover` | `skills/discovery/design-handover/SKILL.md` |
+| Handover | `design-handover` | `skills/discovery/design-handover/SKILL.md` |
 | Design | `craft-landing` | `skills/design/craft-landing/SKILL.md` |
 | Design | `craft-portfolio` | `skills/design/craft-portfolio/SKILL.md` |
 | Design | `craft-product-site` | `skills/design/craft-product-site/SKILL.md` |

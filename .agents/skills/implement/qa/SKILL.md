@@ -16,6 +16,7 @@ description: "受入条件確認・パフォーマンス・アクセシビリテ
 
 1. **受入条件確認**: `docs/requirements/ACCEPTANCE.md` を 1 件ずつ確認
 2. **handover 整合確認**: `python3 .agents/scripts/check_to_dev.py --root .` を実行
+   実装完了時点でも `TO-DEV` が最新のままかを二重確認する
 3. **アクセシビリティ確認**: `bash .agents/scripts/check_accessibility.sh .` を実行
 4. **パフォーマンス確認**: Lighthouse スコアを確認
 5. **証拠整理**: スクリーンショットや確認結果を `docs/qa-reports/` に保存
