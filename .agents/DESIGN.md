@@ -22,23 +22,78 @@ Exceptions requiring automated testing:
 - data processing functions
 - authentication flows
 
+## Design Principles
+
+### 1. 意図のないピクセルは置かない
+
+すべてのデザイン要素に「なぜそこに置いたか」を説明できること。装飾のための装飾は禁止。
+
+- この要素を削除したら体験は劣化するか
+- この余白は視覚的リズムに貢献しているか
+- このアニメーションは理解を助けるか
+
+アクセシビリティ原則:
+
+- WCAG AA 準拠を最低基準とする
+- `prefers-reduced-motion` を全アニメーションに対応
+- セマンティック HTML を徹底
+- スクリーンリーダー対応の `alt` と `aria-label` を入れる
+
+### 2. AI スロップを排除する
+
+「AI が作りました」と一目でわかる無難なデザインを避ける。
+
+- 汎用的な青紫グラデーションを惰性で使わない
+- 巨大シャドウや過剰な角丸を乱用しない
+- テンプレ的なカード構成をそのまま使わない
+- 意味のないアニメーションや飾りを増やさない
+
+### 3. モダン CSS を活用する
+
+JS への依存を最小限にし、最新 CSS 仕様を優先する。
+
+- `@container`
+- `:has()`
+- `@property`
+- `subgrid`
+
+### 4. 全推奨に「なぜ」を付ける
+
+推奨は必ず根拠とセットで示す。
+
+### 5. ビジュアル検証駆動
+
+進行中の判断はプレビューとスクリーンショットを証拠にする。
+
+### 6. トップレベルの美学
+
+- 光学補正
+- 意図的非対称
+- エディトリアルモーメント
+- マテリアリティ
+
+### 7. Design-to-Deployment
+
+モックで止めず、実装と公開まで責任を持つ。
+
 ## Canonical Outputs
 
 - `onboard`: site analysis or codebase map in `docs/specs/`
 - `brainstorm`: direction note that seeds `BRAND-DIRECTION` and `CONTENT-STRUCTURE`
 - `design-brief`: finalized requirements package in `docs/requirements/`
-- `handover`: Dev handover in `docs/handover/TO-DEV.md`
+- `design-handover`: Dev handover in `docs/handover/TO-DEV.md`
 - `design-system`: design tokens and system spec in `docs/specs/`
 - `craft-*`: HTML/CSS/JS implementation with browser preview evidence
 - `review`: findings and fixes in `docs/qa-reports/`
 - `frontend`: component implementation in source code
+- `qa`: final acceptance evidence in `docs/qa-reports/`
 - `deploy`: deployment notes and delivery summary
 
 ## When to Load Skills
 
-- Read `skills/discovery/<skill>/SKILL.md` for onboard, brainstorm, or requirements drafting.
+- Read `skills/discovery/<skill>/SKILL.md` for onboard, brainstorm, requirements drafting, or handover drafting.
 - Read `skills/design/<skill>/SKILL.md` for the active craft or enhancement phase.
-- Read `skills/implement/<skill>/SKILL.md` for frontend, seo, infra, or deploy.
+- Read `skills/implement/<skill>/SKILL.md` for frontend, seo, qa, infra, or deploy.
 - Read `skills/core/second-opinion/SKILL.md` after repeated failures or when an independent challenge is needed.
 - Read `skills/core/retro/SKILL.md` after release, milestone, or project completion.
 

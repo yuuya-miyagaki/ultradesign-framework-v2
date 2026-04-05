@@ -11,7 +11,7 @@ echo "========================"
 # 1. Lorem ipsum check
 echo ""
 echo "📝 Lorem ipsum check..."
-LOREM=$(grep -rn "lorem ipsum\|Lorem Ipsum\|dolor sit amet" \
+LOREM=$(grep -Ern "lorem ipsum|Lorem Ipsum|dolor sit amet" \
   --include="*.html" --include="*.jsx" --include="*.tsx" --include="*.vue" \
   "$ROOT" 2>/dev/null | grep -v node_modules | grep -v .git)
 if [ -n "$LOREM" ]; then
@@ -25,7 +25,7 @@ fi
 # 2. Generic gradient check (blue→purple)
 echo ""
 echo "🎨 Generic gradient check..."
-GRADIENTS=$(grep -rn "linear-gradient.*blue.*purple\|linear-gradient.*#667.*#764\|linear-gradient.*#6366f1.*#8b5cf6" \
+GRADIENTS=$(grep -Ern "linear-gradient.*blue.*purple|linear-gradient.*#667.*#764|linear-gradient.*#6366f1.*#8b5cf6" \
   --include="*.css" --include="*.scss" --include="*.html" \
   "$ROOT" 2>/dev/null | grep -v node_modules | grep -v .git)
 if [ -n "$GRADIENTS" ]; then
@@ -39,7 +39,7 @@ fi
 # 3. Oversized border-radius check
 echo ""
 echo "📐 Oversized border-radius check..."
-RADIUS=$(grep -rn "border-radius:\s*\(50px\|999px\|9999px\|50%\)" \
+RADIUS=$(grep -Ern "border-radius:\s*(50px|999px|9999px|50%)" \
   --include="*.css" --include="*.scss" \
   "$ROOT" 2>/dev/null | grep -v node_modules | grep -v .git)
 if [ -n "$RADIUS" ]; then
@@ -53,7 +53,7 @@ fi
 # 4. Generic font check
 echo ""
 echo "🔤 Generic AI font check..."
-FONTS=$(grep -rn "font-family.*\(Inter\|Roboto\|Arial\|system-ui\)" \
+FONTS=$(grep -Ern "font-family.*(Inter|Roboto|Arial|system-ui)" \
   --include="*.css" --include="*.scss" \
   "$ROOT" 2>/dev/null | grep -v node_modules | grep -v .git)
 if [ -n "$FONTS" ]; then

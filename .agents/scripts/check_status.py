@@ -39,6 +39,29 @@ def main():
         if match and match.group(1) not in valid_states:
             errors.append(f"Invalid state for {key}: {match.group(1)}")
 
+    session_lines = content.splitlines()
+    in_history = False
+    history_rows = []
+    for line in session_lines:
+        if line.strip() == "## Session History":
+            in_history = True
+            continue
+        if in_history and line.startswith("## "):
+            break
+        if not in_history:
+            continue
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        if stripped == "| # | Date | Phase | Summary |":
+            continue
+        if stripped == "|---|------|-------|---------|":
+            continue
+        history_rows.append(stripped)
+
+    if len(history_rows) > 5:
+        errors.append(f"session_history has {len(history_rows)} entries (max 5)")
+
     if errors:
         print("❌ STATUS.md validation failed:")
         for error in errors:

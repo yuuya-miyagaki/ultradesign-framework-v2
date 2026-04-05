@@ -48,7 +48,7 @@ onboard → brainstorm → [GATE discovery] → design-brief → [GATE requireme
 - `design-brief`: 5 つの正本ドキュメントを作成し、要件を固定
 
 **Handover**
-- `handover`: `TO-DEV` を作成し、実装対象とデザイン意図を Dev 向けに翻訳
+- `design-handover`: `TO-DEV` を作成し、実装対象とデザイン意図を Dev 向けに翻訳
 
 **Design**
 - `design-system`: デザインシステム・トークン構築
@@ -66,8 +66,8 @@ onboard → brainstorm → [GATE discovery] → design-brief → [GATE requireme
 ## Hard Gates
 
 - `brainstorm → design-brief`: discovery が承認されている（`phase_approvals.discovery = "approved"`）
-- `design-brief → handover`: requirements が承認されている（`phase_approvals.requirements = "approved"`）
-- `handover → design-system`: handover が承認されている（`phase_approvals.handover = "approved"`）
+- `design-brief → design-handover`: requirements が承認されている（`phase_approvals.requirements = "approved"`）
+- `design-handover → design-system`: handover が承認されている（`phase_approvals.handover = "approved"`）
 - `review → frontend`: design review が承認されている（`phase_approvals.design_review = "approved"`）
 - `qa → deploy`: QA 完了（`phase_approvals.qa = "approved"`）
 
@@ -110,11 +110,12 @@ Allowed states: `pending`, `approved`, `blocked`, `n/a`.
 | 「アニメーション」「GSAP」 | → `animation-craft` |
 | 「アイデア」「方向性」 | → `design-brainstorm` |
 | 「サイト分析」「リデザイン」 | → `design-onboard` |
-| 「要件を整理して開発へ渡したい」 | → `design-brief` |
+| 「要件を整理して開発へ渡したい」 | → `design-brief` → `design-handover` |
+| 「handover」「TO-DEV」「開発へ渡す」 | → `design-handover` |
 | 「コンポーネント化」「React実装」 | → `craft-frontend` |
 | 「SEO」「OGP」 | → `seo-optimization` |
 | 「DB繋いで」「Firebase」 | → `infrastructure-setup` |
-| 「QA」「受入確認」 | → `design-review` + `qa evidence` |
+| 「QA」「受入確認」 | → `qa` |
 | 「デプロイ」「公開」 | → `deploy-management` |
 | 「セカンドオピニオン」 | → `second-opinion` |
 | 「振り返り」「レトロ」 | → `retro` |

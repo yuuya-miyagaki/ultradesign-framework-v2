@@ -5,7 +5,7 @@ description: "プロジェクト振り返り。リリースやマイルストー
 
 # Retro — 振り返り
 
-> プロジェククトの学びを構造化し、次回に活かす。
+> プロジェクトの学びを構造化し、次回に活かす。
 
 ## 起動条件
 
@@ -23,7 +23,7 @@ description: "プロジェクト振り返り。リリースやマイルストー
 
 ## Output
 
-- 振り返りノート in `docs/qa-reports/` or 口頭レポート
+- 振り返りノート in `docs/retro-reports/retro-YYYY-MM-DD.md`
 - `docs/LEARNINGS.md` 更新
 
 ## Do Not

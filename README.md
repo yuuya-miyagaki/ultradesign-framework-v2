@@ -27,7 +27,7 @@ cp -R ultradesign-framework-v2/templates your-project/templates
 ### 2. プロジェクト初期化
 
 ```bash
-mkdir -p docs/{requirements,handover,plans,qa-reports}
+mkdir -p docs/{requirements,handover,plans,qa-reports,retro-reports} references moodboards observations
 cp templates/STATUS.template.md docs/STATUS.md
 cp templates/LEARNINGS.template.md docs/LEARNINGS.md
 cp templates/DESIGN-BRIEF.template.md docs/requirements/DESIGN-BRIEF.md
@@ -139,6 +139,7 @@ Phase 1 の正本は次の 5 枚とする。
 | design-onboard | 「分析」「リデザイン」 | 既存サイト分析 |
 | design-brainstorm | 「アイデア」「作りたい」 | デザイン方向性と上流要件の整理 |
 | design-brief | brainstorm 完了後 | ブリーフと要件文書の整理 |
+| design-handover | 「handover」「TO-DEV」「開発へ渡す」 | `TO-DEV` 作成 |
 
 ### Design
 
@@ -164,6 +165,7 @@ Phase 1 の正本は次の 5 枚とする。
 | craft-frontend | 「React 実装」「コンポーネント化」 | FE 実装 |
 | seo-optimization | 「SEO」「OGP」 | SEO 最適化 |
 | infrastructure-setup | 「Firebase」「DB」 | インフラ構築 |
+| qa | 「QA」「受入確認」 | 最終品質確認 |
 | deploy-management | 「デプロイ」「公開」 | デプロイ管理 |
 
 ### Core
@@ -208,6 +210,9 @@ your-project/
 │   ├── scripts/
 │   └── skills/
 ├── data/
+├── references/
+├── moodboards/
+├── observations/
 ├── templates/
 └── docs/
     ├── STATUS.md
@@ -221,6 +226,7 @@ your-project/
     │   └── TO-DEV.md
     ├── plans/
     ├── qa-reports/
+    ├── retro-reports/
     └── LEARNINGS.md
 ```
 

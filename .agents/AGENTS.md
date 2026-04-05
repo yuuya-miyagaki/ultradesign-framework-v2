@@ -2,12 +2,12 @@
 
 ## 常に読む（セッション開始時）
 
-1. `CONSTITUTION.md` — always-on rules (design principles + process discipline)
+1. `CONSTITUTION.md` — always-on rules, safety, evidence discipline
 2. `WORKFLOW.md` — routing, gates, session start/end
 
 ## 作業時に読む
 
-3. `DESIGN.md` — discovery, design, implementation, deployment task
+3. `DESIGN.md` — design principles, discovery, design, implementation, deployment task
 4. `REFERENCE.md` — skill index, canonical docs, validation scripts, MCP profile
 
 ## スキルファイル（実行時のみ読み込む）

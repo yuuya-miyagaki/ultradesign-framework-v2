@@ -7,6 +7,7 @@
 | Discovery | `design-onboard` | `skills/discovery/design-onboard/SKILL.md` |
 | Discovery | `design-brainstorm` | `skills/discovery/design-brainstorm/SKILL.md` |
 | Discovery | `design-brief` | `skills/discovery/design-brief/SKILL.md` |
+| Discovery | `design-handover` | `skills/discovery/design-handover/SKILL.md` |
 | Design | `craft-landing` | `skills/design/craft-landing/SKILL.md` |
 | Design | `craft-portfolio` | `skills/design/craft-portfolio/SKILL.md` |
 | Design | `craft-product-site` | `skills/design/craft-product-site/SKILL.md` |
@@ -22,6 +23,7 @@
 | Implement | `craft-frontend` | `skills/implement/craft-frontend/SKILL.md` |
 | Implement | `seo-optimization` | `skills/implement/seo-optimization/SKILL.md` |
 | Implement | `infrastructure-setup` | `skills/implement/infrastructure-setup/SKILL.md` |
+| Implement | `qa` | `skills/implement/qa/SKILL.md` |
 | Implement | `deploy-management` | `skills/implement/deploy-management/SKILL.md` |
 | Core | `second-opinion` | `skills/core/second-opinion/SKILL.md` |
 | Core | `retro` | `skills/core/retro/SKILL.md` |
@@ -38,6 +40,7 @@
 | Script | Purpose | Usage |
 |--------|---------|-------|
 | `scripts/check_status.py` | `STATUS.md` の構造検証 | `python3 .agents/scripts/check_status.py --root .` |
+| `scripts/check_to_dev.py` | `TO-DEV.md` の必須セクション検証 | `python3 .agents/scripts/check_to_dev.py --root .` |
 | `scripts/check_slop.sh` | AI スロップ自動検出 | `bash .agents/scripts/check_slop.sh .` |
 | `scripts/check_accessibility.sh` | WCAG AA 基本チェック | `bash .agents/scripts/check_accessibility.sh .` |
 
@@ -50,6 +53,11 @@
 - `docs/requirements/EXPERIENCE-RULES.md`
 - `docs/requirements/ACCEPTANCE.md`
 - `docs/handover/TO-DEV.md`
+
+## Deprecated Templates
+
+- `templates/DESIGN-DNA.template.md` → `templates/BRAND-DIRECTION.template.md`
+- `templates/HANDOVER.template.md` → `templates/TO-DEV.template.md`
 
 ## Approval States
 
