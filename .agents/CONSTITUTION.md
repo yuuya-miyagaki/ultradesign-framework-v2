@@ -135,12 +135,11 @@ JSへの依存を最小限にし、最新CSS仕様を用いて実装する。
 
 ## Evidence Standard
 
-- デザインブリーフは `docs/briefs/` に保管
-- デザインDNAは `docs/specs/design-dna.md` に保管
-- デザインスペックは `docs/specs/` に保管
+- 要件の正本は `docs/requirements/` に保管
+- ブランドや構成の検討メモは `docs/specs/` に保管してよい
 - 実装計画は `docs/plans/` に保管
 - QA・レビュー結果は `docs/qa-reports/` に保管
-- ハンドオーバーは `docs/handover/` に保管
+- Dev handover は `docs/handover/TO-DEV.md` に保管
 - セッション再開コンテキストは `docs/STATUS.md` に保管
 
 ## Guardrails

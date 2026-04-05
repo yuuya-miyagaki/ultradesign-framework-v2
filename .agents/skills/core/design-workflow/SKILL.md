@@ -14,18 +14,19 @@ description: "デザインスキルの自動ルーティング。ユーザーの
 ## 複合リクエストの分解
 
 ```text
-例: 「動画ヒーローのあるSaaS向けLPを作りたい。AIチャットも付けて。」
+例: 「動画ヒーローのある SaaS 向け LP を作りたい。AI チャットも付けて。」
 
 分解:
-  1. design-brainstorm → デザイン方向性決定
-  2. design-brief → ブリーフ作成
-  3. design-system → デザインシステム構築
-  4. craft-landing → LP設計・実装
-  5. hero-video / ai-chat-widget → 追加演出
-  6. design-review → 品質監査
-  7. craft-frontend → コンポーネント実装
-  8. seo-optimization → SEO/OGP
-  9. deploy-management → デプロイ
+  1. design-brainstorm → discovery 決定
+  2. design-brief → requirements 作成
+  3. handover → TO-DEV 作成
+  4. design-system → デザインシステム構築
+  5. craft-landing → LP 設計・実装
+  6. hero-video / ai-chat-widget → 追加演出
+  7. design-review → 品質監査
+  8. craft-frontend → コンポーネント実装
+  9. seo-optimization → SEO / OGP
+  10. deploy-management → デプロイ
 ```
 
 ## 推奨フロー
@@ -33,13 +34,14 @@ description: "デザインスキルの自動ルーティング。ユーザーの
 ```mermaid
 graph TD
     START[ユーザーリクエスト] --> ANALYZE{分析}
-    ANALYZE -->|新規| BRAINSTORM[brainstorm]
-    ANALYZE -->|既存分析| ONBOARD[onboard]
+    ANALYZE -->|新規| BRAINSTORM[design-brainstorm]
+    ANALYZE -->|既存分析| ONBOARD[design-onboard]
     ANALYZE -->|直接制作| CRAFT{タイプ?}
 
-    BRAINSTORM --> BRIEF[design-brief]
-    ONBOARD --> BRIEF
-    BRIEF --> SYSTEM[design-system]
+    BRAINSTORM --> REQUIREMENTS[design-brief]
+    ONBOARD --> REQUIREMENTS
+    REQUIREMENTS --> HANDOVER[TO-DEV]
+    HANDOVER --> SYSTEM[design-system]
     SYSTEM --> CRAFT
 
     CRAFT -->|LP/HP| LANDING[craft-landing]
@@ -69,8 +71,9 @@ graph TD
     FRONTEND --> SEO[seo-optimization]
     SEO --> NEED_INFRA{バックエンド?}
     NEED_INFRA -->|あり| INFRA[infrastructure-setup]
-    NEED_INFRA -->|なし| DEPLOY[deploy-management]
-    INFRA --> DEPLOY
+    NEED_INFRA -->|なし| QA[qa evidence]
+    INFRA --> QA
+    QA --> DEPLOY[deploy-management]
     DEPLOY --> DONE((完了))
 
     REVIEW -->|Fail x3| BLOCKED[BLOCKED]

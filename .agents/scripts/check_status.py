@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Validate docs/STATUS.md structure and consistency."""
 import argparse
+import re
 import sys
 from pathlib import Path
+
 
 def main():
     parser = argparse.ArgumentParser(description="Check STATUS.md")
@@ -20,39 +22,32 @@ def main():
 
     content = status_file.read_text()
 
-    # Check required sections
-    required = ["Phase Approvals", "Current State", "Session History"]
-    for section in required:
+    required_sections = ["Phase Approvals", "Current State", "Session History"]
+    for section in required_sections:
         if section not in content:
             errors.append(f"Missing section: {section}")
 
-    # Check phase_approvals keys
-    approval_keys = ["brainstorm", "brief", "review", "qa"]
+    approval_keys = ["discovery", "requirements", "handover", "design_review", "qa"]
+    valid_states = ["pending", "approved", "blocked", "n/a"]
+
     for key in approval_keys:
         if key not in content:
             errors.append(f"Missing approval key: {key}")
+            continue
 
-    # Check valid states
-    valid_states = ["pending", "approved", "blocked", "n/a"]
-    for key in approval_keys:
-        for state in valid_states:
-            if f'{key}: "{state}"' in content:
-                break
-        else:
-            # Only warn if the key exists but has an invalid state
-            import re
-            match = re.search(rf'{key}:\s*"([^"]*)"', content)
-            if match and match.group(1) not in valid_states:
-                errors.append(f"Invalid state for {key}: {match.group(1)}")
+        match = re.search(rf'{key}:\s*"([^"]*)"', content)
+        if match and match.group(1) not in valid_states:
+            errors.append(f"Invalid state for {key}: {match.group(1)}")
 
     if errors:
         print("❌ STATUS.md validation failed:")
-        for e in errors:
-            print(f"  - {e}")
+        for error in errors:
+            print(f"  - {error}")
         sys.exit(1)
-    else:
-        print("✅ STATUS.md is valid")
-        sys.exit(0)
+
+    print("✅ STATUS.md is valid")
+    sys.exit(0)
+
 
 if __name__ == "__main__":
     main()

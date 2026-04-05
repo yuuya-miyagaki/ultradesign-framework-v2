@@ -5,11 +5,12 @@
 ```yaml
 project: ""
 last_updated: ""
-current_phase: "onboard"
+current_phase: "discovery"
 phase_approvals:
-  brainstorm: "pending"
-  brief: "pending"
-  review: "pending"
+  discovery: "pending"
+  requirements: "pending"
+  handover: "pending"
+  design_review: "pending"
   qa: "pending"
 ```
 

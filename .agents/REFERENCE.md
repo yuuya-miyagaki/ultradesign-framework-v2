@@ -37,22 +37,26 @@
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `scripts/check_status.py` | STATUS.md の構造検証 | `python3 .agents/scripts/check_status.py --root .` |
-| `scripts/check_slop.sh` | AIスロップ自動検出 | `bash .agents/scripts/check_slop.sh .` |
-| `scripts/check_accessibility.sh` | WCAG AA基本チェック | `bash .agents/scripts/check_accessibility.sh .` |
+| `scripts/check_status.py` | `STATUS.md` の構造検証 | `python3 .agents/scripts/check_status.py --root .` |
+| `scripts/check_slop.sh` | AI スロップ自動検出 | `bash .agents/scripts/check_slop.sh .` |
+| `scripts/check_accessibility.sh` | WCAG AA 基本チェック | `bash .agents/scripts/check_accessibility.sh .` |
 
 ## Canonical Docs
 
 - `docs/STATUS.md`
-- `docs/briefs/DESIGN-BRIEF.md`
-- `docs/handover/HANDOVER.md`
+- `docs/requirements/DESIGN-BRIEF.md`
+- `docs/requirements/BRAND-DIRECTION.md`
+- `docs/requirements/CONTENT-STRUCTURE.md`
+- `docs/requirements/EXPERIENCE-RULES.md`
+- `docs/requirements/ACCEPTANCE.md`
+- `docs/handover/TO-DEV.md`
 
 ## Approval States
 
-- `pending`: work exists but gate is not approved yet.
-- `approved`: the gate was explicitly approved and may be crossed.
-- `blocked`: a blocker exists and prevents progression.
-- `n/a`: the gate does not apply to the current task.
+- `pending`: work exists but gate is not approved yet
+- `approved`: the gate was explicitly approved and may be crossed
+- `blocked`: a blocker exists and prevents progression
+- `n/a`: the gate does not apply to the current task
 
 ## Completion Pattern
 
@@ -72,7 +76,7 @@
 | **NEEDS_CONTEXT** | 情報不足で判断不能 | ユーザー入力が必要 |
 
 > **design-review の無限ループ回避:**
-> 自動修正ループは「最大3回まで」。3回リトライ後も FAIL なら `BLOCKED` とし、ユーザーの判断を仰ぐ。
+> 自動修正ループは最大 3 回まで。3 回リトライ後も FAIL なら `BLOCKED` とし、ユーザーの判断を仰ぐ。
 
 ## MCP Profile
 
@@ -83,7 +87,7 @@
 | **filesystem** | File operations | All skills |
 | **github** | Repository, PR, Issue | deploy, review |
 | **playwright** | Browser automation, visual verification | design-review, craft-* |
-| **context7** | Library/framework docs (must check before infra code) | craft-frontend, infrastructure-setup, animation-craft |
+| **context7** | Library/framework docs | craft-frontend, infrastructure-setup, animation-craft |
 | **memory** | Knowledge graph, learning persistence | retro, design-onboard |
 | **drawio** | Architecture diagrams | design-brainstorm, design-system |
 
@@ -97,7 +101,7 @@
 
 ### MCP not connected
 
-```
+```text
 ⚠️ MCP not connected: [name]
   This skill benefits from [name] for [reason].
   → Connect: enable [name] in agent MCP settings

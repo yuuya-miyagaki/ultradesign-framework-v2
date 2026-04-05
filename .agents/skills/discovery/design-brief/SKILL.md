@@ -1,36 +1,45 @@
 ---
 name: discovery/design-brief
-description: "デザインブリーフ作成。brainstorm完了後に起動。ターゲット、ゴール、ブランド方向、技術制約、スコープをまとめる。"
+description: "要件パッケージ作成。brainstorm 完了後に起動。5つの正本を作成し、開発 handover の土台を固める。"
 ---
 
-# Design Brief — デザインブリーフ作成
+# Design Brief — 要件パッケージ作成
 
-> brainstorm の結果をもとに、制作の全体像を定義するデザインブリーフを作成する。
+> brainstorm の結果をもとに、ホームページ系案件の要件を 5 つの正本ドキュメントへ整理する。
 
 ## 起動条件
 
-- `phase_approvals.brainstorm = "approved"` 完了後
+- `phase_approvals.discovery = "approved"` 完了後
 - デザイン方向性が決定済み
 
 ## Steps
 
-1. **テンプレート初期化**: `templates/DESIGN-BRIEF.template.md` → `docs/briefs/DESIGN-BRIEF.md`
-2. **要件記入**: brainstorm の結果を反映
-3. **技術要件確定**: フレームワーク、デプロイ先、特殊機能
-4. **スコープ定義**: In-Scope / Out-of-Scope
-5. **成功基準設定**: Lighthouse スコア、AIスロップチェック等
-6. **ユーザー承認**: ブリーフの最終確認
+1. **テンプレート初期化**:
+   - `templates/DESIGN-BRIEF.template.md` → `docs/requirements/DESIGN-BRIEF.md`
+   - `templates/BRAND-DIRECTION.template.md` → `docs/requirements/BRAND-DIRECTION.md`
+   - `templates/CONTENT-STRUCTURE.template.md` → `docs/requirements/CONTENT-STRUCTURE.md`
+   - `templates/EXPERIENCE-RULES.template.md` → `docs/requirements/EXPERIENCE-RULES.md`
+   - `templates/ACCEPTANCE.template.md` → `docs/requirements/ACCEPTANCE.md`
+2. **要件記入**: 目的、対象、ブランド、構成、体験品質、受入条件を反映
+3. **整合確認**: 5 文書の用語、優先順位、対象範囲を揃える
+4. **未解決事項の明記**: 迷いを隠さず残す
+5. **ユーザー承認**: requirements の最終確認
 
 ## Output
 
-- `docs/briefs/DESIGN-BRIEF.md`（記入済み）
+- `docs/requirements/DESIGN-BRIEF.md`
+- `docs/requirements/BRAND-DIRECTION.md`
+- `docs/requirements/CONTENT-STRUCTURE.md`
+- `docs/requirements/EXPERIENCE-RULES.md`
+- `docs/requirements/ACCEPTANCE.md`
 
 ## Gate
 
-- 承認後に `phase_approvals.brief = "approved"` を設定
-- briefが承認されるまで craft-* フェーズに進まない
+- 承認後に `phase_approvals.requirements = "approved"` を設定
+- requirements が承認されるまで handover フェーズに進まない
 
 ## Do Not
 
-- brainstorm をスキップしてブリーフを書く（Lightweight Entry の場合を除く）
-- 成功基準を曖昧にする
+- brainstorm をスキップして要件を書く（Lightweight Entry の場合を除く）
+- 5 文書の役割を混ぜる
+- 受入条件を曖昧にする

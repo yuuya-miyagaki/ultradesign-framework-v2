@@ -2,15 +2,18 @@
 
 ## ゲート状態
 
-- [ ] `phase_approvals.brainstorm`: checked before entering design-brief
-- [ ] `phase_approvals.brief`: checked before entering craft-*
-- [ ] `phase_approvals.review`: checked before entering frontend
+- [ ] `phase_approvals.discovery`: checked before entering requirements drafting
+- [ ] `phase_approvals.requirements`: checked before entering handover
+- [ ] `phase_approvals.handover`: checked before entering design-system / craft-*
+- [ ] `phase_approvals.design_review`: checked before entering frontend
 - [ ] `phase_approvals.qa`: checked before entering deploy
 
 ## エビデンス
 
 - [ ] 各フェーズの成果物が指定パスに保管されている
-- [ ] ブラウザプレビューのスクリーンショットがある（UI作業時）
+- [ ] `docs/requirements/` の正本が最新
+- [ ] `docs/handover/TO-DEV.md` が存在する（handover が適用される場合）
+- [ ] ブラウザプレビューのスクリーンショットがある（UI 作業時）
 - [ ] `docs/STATUS.md` が最新
 
 ## 承認プロトコル

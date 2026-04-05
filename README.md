@@ -1,10 +1,20 @@
 # Ultradesign Framework v2
 
-> UI/UXデザインと実装に特化した AI エージェント運用フレームワーク
+> UI/UX デザインと実装に特化した AI エージェント運用フレームワーク
 
-Ultra Framework v7 のプロセス規律と Ultradesign Framework v1 のデザイン知識を統合した、デザイン・トゥ・デプロイ一貫型フレームワーク。
+Ultra Framework v7 の運用規律を土台に、ホームページ系案件の上流整理と開発 handover を強化したデザインフレームワーク。
 
-## 🚀 クイックスタート
+## Positioning
+
+Phase 1 の対象は次の 3 種に限定する。
+
+- LP
+- コーポレートサイト
+- サービスサイト
+
+ダッシュボードや業務 UI は Phase 2 の拡張対象とする。最初から広げず、`誰に何をどう伝えるか` を整理しやすいホームページ系で型を固める。
+
+## Quick Start
 
 ### 1. フレームワークをプロジェクトにコピー
 
@@ -17,77 +27,142 @@ cp -R ultradesign-framework-v2/templates your-project/templates
 ### 2. プロジェクト初期化
 
 ```bash
-# docs 構造を作成
-mkdir -p docs/{specs,briefs,qa-reports,plans,handover}
-
-# STATUS.md を初期化
+mkdir -p docs/{requirements,handover,plans,qa-reports}
 cp templates/STATUS.template.md docs/STATUS.md
+cp templates/DESIGN-BRIEF.template.md docs/requirements/DESIGN-BRIEF.md
+cp templates/BRAND-DIRECTION.template.md docs/requirements/BRAND-DIRECTION.md
+cp templates/CONTENT-STRUCTURE.template.md docs/requirements/CONTENT-STRUCTURE.md
+cp templates/EXPERIENCE-RULES.template.md docs/requirements/EXPERIENCE-RULES.md
+cp templates/ACCEPTANCE.template.md docs/requirements/ACCEPTANCE.md
+cp templates/TO-DEV.template.md docs/handover/TO-DEV.md
 ```
 
 ### 3. 制作開始
 
-AIエージェントに話しかけるだけ:
+AI エージェントに話しかけるだけ:
 
-- 「LP作りたいんだけど」→ 自動で design-brainstorm から開始
-- 「このサイトをリデザインして」→ design-onboard 起動
-- 「ダッシュボード作って」→ craft-dashboard 起動
+- 「LP を作りたい」 → `design-brainstorm`
+- 「このサイトをリデザインしたい」 → `design-onboard`
+- 「要件を整理して開発へ渡したい」 → discovery から requirements/handover へ進行
 
-## 📐 アーキテクチャ
+## Architecture
 
+`.agents/` は実運用ルールを持ち、`templates/` は正本ドキュメントを初期化する。
+
+```text
+AGENTS.md
+  → CONSTITUTION.md
+  → WORKFLOW.md
+  → DESIGN.md
+  → REFERENCE.md
 ```
-AGENTS.md (エントリポイント)
-  → CONSTITUTION.md (デザイン7鉄則 + 運用ルール)
-  → WORKFLOW.md (ルーティング + ゲート管理)
-  → DESIGN.md (デザインフロー)
-  → REFERENCE.md (スキル一覧 + MCP設定 + バリデーション)
-```
 
-## 🎨 デザインデータベース
+運用上は次の 2 層に分ける。
+
+- `Client / Design Discovery`: 要件とデザイン判断の正本を固める
+- `Handover to Dev / Design Production`: 正本を参照しながら `TO-DEV` を作り、制作と実装へつなぐ
+
+## Canonical Docs
+
+Phase 1 の正本は次の 5 枚とする。
+
+- `docs/requirements/DESIGN-BRIEF.md`
+- `docs/requirements/BRAND-DIRECTION.md`
+- `docs/requirements/CONTENT-STRUCTURE.md`
+- `docs/requirements/EXPERIENCE-RULES.md`
+- `docs/requirements/ACCEPTANCE.md`
+
+開発引き渡しは別紙で管理する。
+
+- `docs/handover/TO-DEV.md`
+
+### Document Roles
+
+- `DESIGN-BRIEF`: 目的、対象、課題、成功指標、制約を固定する
+- `BRAND-DIRECTION`: ブランド印象、トーン、参考方向性、避ける表現、判断根拠を固定する
+- `CONTENT-STRUCTURE`: ページ構成、導線、CTA、コンテンツ優先順位を固定する
+- `EXPERIENCE-RULES`: UI 原則、レスポンシブ、アクセシビリティ、パフォーマンス、SEO、実装制約を固定する
+- `ACCEPTANCE`: デザイン受入条件、実装受入条件、非機能受入条件、必要証拠を固定する
+- `TO-DEV`: 実装対象、デザイン意図、体験ルール、未確定事項を Dev 向けに翻訳する
+
+## Operating Flow
+
+1. `discovery`
+クライアントの課題、対象、提供価値、制約を整理する。
+
+2. `requirements`
+5 つの正本ドキュメントを作成し、合意内容を固定する。
+
+3. `handover`
+`TO-DEV` を作成し、実装対象とデザイン意図を開発へ渡す。
+
+4. `design_review`
+制作物が正本と一致しているかを確認する。
+
+5. `qa`
+実装品質、アクセシビリティ、パフォーマンス、受入条件を確認する。
+
+## Design Rationale And Taste
+
+判断根拠は正本に明示的に残す。
+
+- `BRAND-DIRECTION`: なぜこのトーンなのか
+- `TO-DEV`: なぜこの UI / レイアウト判断なのか
+
+一方で、感性強化のための参考資産は正本とは分けて扱う。
+
+- `references/`
+- `moodboards/`
+- `observations/`
+
+原則は `正本は厳密に、感性資産は広く`。
+
+## Design Database
 
 | ファイル | コンテンツ | 件数 |
 |---------|-----------|------|
 | `data/styles.csv` | デザインスタイル辞典 | 58 |
 | `data/colors.csv` | カラーパレット集 | 96 |
 | `data/typography.csv` | フォントペアリング集 | 57 |
-| `data/landing.csv` | LPレイアウトパターン集 | 30 |
+| `data/landing.csv` | LP レイアウトパターン集 | 30 |
 
-## 🔧 スキル一覧（22種）
+## Skills
 
-### Discovery（発見）
+### Discovery
 
 | スキル | 起動キーワード | 用途 |
 |-------|--------------|------|
 | design-onboard | 「分析」「リデザイン」 | 既存サイト分析 |
-| design-brainstorm | 「アイデア」「作りたい」 | デザイン方向性決定 |
-| design-brief | brainstorm完了後 | ブリーフ作成 |
+| design-brainstorm | 「アイデア」「作りたい」 | デザイン方向性と上流要件の整理 |
+| design-brief | brainstorm 完了後 | ブリーフと要件文書の整理 |
 
-### Design（設計・制作）
+### Design
 
 | スキル | 起動キーワード | 用途 |
 |-------|--------------|------|
-| craft-landing | 「LP」「ホームページ」 | LP/HP制作 |
+| craft-landing | 「LP」「ホームページ」 | LP / HP 制作 |
 | craft-portfolio | 「ポートフォリオ」 | 作品集サイト |
-| craft-product-site | 「SaaS」「プロダクト」 | プロダクトサイト |
-| craft-dashboard | 「ダッシュボード」 | 管理画面UI |
-| craft-ecommerce | 「ECサイト」「ショップ」 | ECサイトUI |
+| craft-product-site | 「SaaS」「プロダクト」 | サービスサイト |
+| craft-dashboard | 「ダッシュボード」 | 管理画面 UI。Phase 2 対象 |
+| craft-ecommerce | 「EC サイト」「ショップ」 | EC サイト UI |
 | design-system | 「デザインシステム」 | テーマ構築 |
-| design-tokens | 「CSS変数」「トークン」 | 変数管理 |
+| design-tokens | 「CSS 変数」「トークン」 | 変数管理 |
 | design-review | 「レビュー」「品質チェック」 | デザイン品質監査 |
 | hero-video | 「動画ヒーロー」 | 動画演出 |
-| craft-3d-hero | 「3D」「WebGL」 | 3D演出 |
-| ai-chat-widget | 「AIチャット」 | チャットウィジェット |
+| craft-3d-hero | 「3D」「WebGL」 | 3D 演出 |
+| ai-chat-widget | 「AI チャット」 | チャットウィジェット |
 | animation-craft | 「アニメーション」 | マイクロインタラクション |
 
-### Implement（実装）
+### Implement
 
 | スキル | 起動キーワード | 用途 |
 |-------|--------------|------|
-| craft-frontend | 「React実装」「コンポーネント化」 | FE実装 |
-| seo-optimization | 「SEO」「OGP」 | SEO最適化 |
+| craft-frontend | 「React 実装」「コンポーネント化」 | FE 実装 |
+| seo-optimization | 「SEO」「OGP」 | SEO 最適化 |
 | infrastructure-setup | 「Firebase」「DB」 | インフラ構築 |
 | deploy-management | 「デプロイ」「公開」 | デプロイ管理 |
 
-### Core（共通）
+### Core
 
 | スキル | 起動キーワード | 用途 |
 |-------|--------------|------|
@@ -95,60 +170,66 @@ AGENTS.md (エントリポイント)
 | retro | 「振り返り」 | レトロスペクティブ |
 | design-workflow | 常時 | 自動ルーティング |
 
-## 🛡️ デザイン7鉄則
+## Design Principles
 
-1. **意図のないピクセルを置くな**: 全要素に明確な理由
-2. **AIスロップ絶対排除**: テンプレ的・汎用的デザイン禁止
-3. **モダンCSS活用**: Container Queries, :has(), OKLCH, Baseline 2024+
-4. **全推奨に「なぜ」を付ける**: デザイン決定に根拠を明示
-5. **ビジュアル検証駆動**: ブラウザプレビュー + スクリーンショットが証拠
-6. **トップレベルの美学**: 光学補正、意図的非対称、エディトリアルモーメント
-7. **Design-to-Deployment**: デザインモックアップで終わらない、実コードまで
+1. **意図のないピクセルを置くな**: 全要素に明確な理由を持たせる
+2. **AI スロップ絶対排除**: テンプレ的で無難な画面を避ける
+3. **モダン CSS 活用**: Container Queries, `:has()`, OKLCH, Baseline 2024+ を積極活用する
+4. **全推奨に「なぜ」を付ける**: デザイン判断の根拠を明示する
+5. **ビジュアル検証駆動**: プレビューとスクリーンショットを証拠として扱う
+6. **トップレベルの美学**: 光学補正、意図的非対称、エディトリアルモーメントを設計する
+7. **Design-to-Deployment**: モックで止めず、実装と公開まで見据える
 
-## 🔒 ゲート管理
+## Gates
 
 | ゲート | タイミング | 条件 |
 |-------|-----------|------|
-| brainstorm | デザイン方向性決定後 | ユーザー承認 |
-| brief | ブリーフ作成後 | ユーザー承認 |
-| review | デザインレビュー後 | PASS + ユーザー承認 |
-| qa | QA完了後 | 全チェック + ユーザー承認 |
+| `discovery` | クライアント整理後 | ユーザー承認 |
+| `requirements` | 5 正本作成後 | ユーザー承認 |
+| `handover` | `TO-DEV` 作成後 | ユーザー承認 |
+| `design_review` | デザインレビュー後 | PASS + ユーザー承認 |
+| `qa` | QA 完了後 | 全チェック + ユーザー承認 |
 
-## 📁 プロジェクト構造
+## Project Structure
 
-```
+```text
 your-project/
 ├── .agents/
-│   ├── AGENTS.md          ← エントリポイント
-│   ├── CONSTITUTION.md    ← ルール・鉄則
-│   ├── WORKFLOW.md        ← フロー・ルーティング
-│   ├── DESIGN.md          ← デザインブランチ
-│   ├── REFERENCE.md       ← スキル・MCP・バリデーション
-│   ├── checklists/        ← 品質チェックリスト
-│   ├── scripts/           ← 自動検証スクリプト
-│   └── skills/            ← 22種のスキル定義
-├── data/                  ← デザインデータベース (CSV)
-├── templates/             ← ドキュメントテンプレート
-└── docs/                  ← プロジェクトドキュメント
+│   ├── AGENTS.md
+│   ├── CONSTITUTION.md
+│   ├── WORKFLOW.md
+│   ├── DESIGN.md
+│   ├── REFERENCE.md
+│   ├── checklists/
+│   ├── scripts/
+│   └── skills/
+├── data/
+├── templates/
+└── docs/
     ├── STATUS.md
-    ├── specs/
-    ├── briefs/
+    ├── requirements/
+    │   ├── DESIGN-BRIEF.md
+    │   ├── BRAND-DIRECTION.md
+    │   ├── CONTENT-STRUCTURE.md
+    │   ├── EXPERIENCE-RULES.md
+    │   └── ACCEPTANCE.md
+    ├── handover/
+    │   └── TO-DEV.md
     ├── plans/
-    ├── qa-reports/
-    └── handover/
+    └── qa-reports/
 ```
 
-## 🌐 前提環境
+## Assumptions
 
-Antigravity (Gemini) 上での動作を想定。以下のMCPサーバーを活用:
+Antigravity (Gemini) 上での運用を前提にしつつ、MCP によるブラウザ確認とファイル操作を活用する。
 
-- **filesystem** — ファイル操作
-- **playwright** — ブラウザプレビュー・スクリーンショット
-- **context7** — ライブラリドキュメント参照
-- **firebase** — Firebase操作
-- **github** — リポジトリ操作
-- **memory** — 知識永続化
+- `filesystem`
+- `playwright`
+- `context7`
+- `firebase`
+- `github`
+- `memory`
 
-## 📜 ライセンス
+## License
 
 MIT
